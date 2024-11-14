@@ -1,10 +1,12 @@
 package vn.ifine.laptopshop.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMethod;
 
+import vn.ifine.laptopshop.domain.User;
 import vn.ifine.laptopshop.service.UserService;
 
 @Controller
@@ -18,23 +20,22 @@ public class UserController {
     }
 
     @RequestMapping("/")
-    public String getHomePage() {
+    public String getHomePage(Model model) {
         String test = this.userService.handleHello();
+        model.addAttribute("eric", test);
+        model.addAttribute("hoidanit", "from controller with model");
+        return "hello";
+    }
+
+    @RequestMapping("/admin/user")
+    public String getUserPage(Model model) {
+        model.addAttribute("newUser", new User());
+        return "admin/user/create";
+    }
+
+    @RequestMapping(value = "/admin/user/create", method = RequestMethod.POST)
+    public String createUserPage(Model model, @ModelAttribute("newUser") User hoidanit) {
+        System.out.println("Run here..." + hoidanit);
         return "hello";
     }
 }
-// @RestController
-// public class UserController {
-
-// // DI: dependency injection
-// private UserService userService;
-
-// public UserController(UserService userService) {
-// this.userService = userService;
-// }
-
-// @GetMapping("/")
-// public String getHomePage() {
-// return this.userService.handleHello();
-// }
-// }
