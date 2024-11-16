@@ -29,4 +29,13 @@ public class UserService {
         System.out.println(hoidanit);
         return hoidanit;
     }
+
+    public User getUserById(long id) {
+        User user = this.userRepository.findById(id);
+        return user;
+    }
+
+    public void deleteAUser(long id) {
+        this.userRepository.deleteById(id);
+    }
 }
