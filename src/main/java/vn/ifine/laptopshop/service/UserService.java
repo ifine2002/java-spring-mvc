@@ -4,16 +4,22 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import jakarta.transaction.Transactional;
+import vn.ifine.laptopshop.domain.Role;
 import vn.ifine.laptopshop.domain.User;
+import vn.ifine.laptopshop.repository.RoleRepository;
 import vn.ifine.laptopshop.repository.UserRepository;
 
 @Service
+@Transactional
 public class UserService {
 
     private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, RoleRepository roleRepository) {
         this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
     }
 
     public List<User> getAllUsers() {
@@ -37,5 +43,9 @@ public class UserService {
 
     public void deleteAUser(long id) {
         this.userRepository.deleteById(id);
+    }
+
+    public Role getRoleByName(String name) {
+        return this.roleRepository.findByName(name);
     }
 }
