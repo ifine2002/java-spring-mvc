@@ -39,18 +39,6 @@ public class RegisterValidator implements ConstraintValidator<RegisterChecked, R
             valid = false;
         }
         // check firstName and lastName
-        if (user.getFirstName().isEmpty()) {
-            context.buildConstraintViolationWithTemplate("Firstname không được để trống")
-                    .addPropertyNode("firstName")
-                    .addConstraintViolation()
-                    .disableDefaultConstraintViolation();
-        }
-        if (user.getLastName().isEmpty()) {
-            context.buildConstraintViolationWithTemplate("Lastname không được để trống")
-                    .addPropertyNode("lastName")
-                    .addConstraintViolation()
-                    .disableDefaultConstraintViolation();
-        }
         return valid;
     }
 }
