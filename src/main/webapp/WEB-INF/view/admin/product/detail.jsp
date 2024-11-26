@@ -52,15 +52,9 @@
                                                         <c:if test="${product.image != null}">
                                                             <li class="list-group-item">Image:
                                                                 <div class="mt-3 col-12">
-
                                                                     <img id="avatarPreview"
                                                                         src="/images/product/${product.image}"
-                                                                        style="max-height: 250px; display: block; margin-bottom: 10px;" />
-
-                                                                    <!-- <c:if test="${user.avatar == null}">
-                                                                    <img id="avatarPreview"
-                                                                        style="max-height: 250px; display: none; margin-bottom: 10px;" />
-                                                                </c:if> -->
+                                                                        style="max-height: 250px; margin-bottom: 10px;" />
                                                                 </div>
                                                             </li>
                                                         </c:if>
