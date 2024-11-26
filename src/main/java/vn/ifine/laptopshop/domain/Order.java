@@ -20,6 +20,59 @@ public class Order {
 
     private double totalPrice;
 
+    private String receiverName;
+    private String receiverAddress;
+    private String receiverPhone;
+    private String status;
+
+    public String getReceiverName() {
+        return receiverName;
+    }
+
+    public void setReceiverName(String receiverName) {
+        this.receiverName = receiverName;
+    }
+
+    public String getReceiverAddress() {
+        return receiverAddress;
+    }
+
+    public void setReceiverAddress(String receiverAddress) {
+        this.receiverAddress = receiverAddress;
+    }
+
+    public String getReceiverPhone() {
+        return receiverPhone;
+    }
+
+    public void setReceiverPhone(String receiverPhone) {
+        this.receiverPhone = receiverPhone;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<OrderDetail> getOrder_details() {
+        return order_details;
+    }
+
+    public void setOrder_details(List<OrderDetail> order_details) {
+        this.order_details = order_details;
+    }
+
     // user id
     @ManyToOne
     @JoinColumn(name = "user_id")

@@ -17,6 +17,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import vn.ifine.laptopshop.domain.Cart;
 import vn.ifine.laptopshop.domain.User;
 import vn.ifine.laptopshop.service.UserService;
 
@@ -56,7 +57,13 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
         session.setAttribute("avatar", user.getAvatar());
         session.setAttribute("id", user.getId());
         session.setAttribute("email", user.getEmail());
-
+        // kiểm tra xem giỏ hàng có tồn tại không trước khi truy cập sum
+        Cart cart = user.getCart();
+        int sum = 0;
+        if (cart != null) {
+            sum = cart.getSum();
+        }
+        session.setAttribute("sum", sum);
     }
 
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
