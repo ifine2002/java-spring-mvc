@@ -32,7 +32,7 @@
                         <li>
                             <form action="/logout" method="post">
                                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-                                <button class="dropdown-item" href="#!">Logout</button>
+                                <button class="dropdown-item" type="submit">Logout</button>
                             </form>
                         </li>
                     </ul>

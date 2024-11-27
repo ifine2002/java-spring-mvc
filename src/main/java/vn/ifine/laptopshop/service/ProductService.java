@@ -55,7 +55,7 @@ public class ProductService {
         this.productRepository.deleteById(id);
     }
 
-    public void handleAddProductToCart(String email, long productId, HttpSession session) {
+    public void handleAddProductToCart(String email, long productId, HttpSession session, long quantity) {
         User user = this.userService.getUserByEmail(email);
         if (user != null) {
             // check user đã có Cart chưa ? nếu chưa -> tạo mới
@@ -82,7 +82,7 @@ public class ProductService {
                     cartDetail.setCart(cart);
                     cartDetail.setProduct(p);
                     cartDetail.setPrice(p.getPrice());
-                    cartDetail.setQuantity(1);
+                    cartDetail.setQuantity(quantity);
 
                     this.cartDetailRepository.save(cartDetail);
 
@@ -92,7 +92,7 @@ public class ProductService {
                     this.cartRepository.save(cart);
                     session.setAttribute("sum", s);
                 } else {
-                    oldCartDetail.setQuantity(oldCartDetail.getQuantity() + 1);
+                    oldCartDetail.setQuantity(oldCartDetail.getQuantity() + quantity);
                     this.cartDetailRepository.save(oldCartDetail);
                 }
 

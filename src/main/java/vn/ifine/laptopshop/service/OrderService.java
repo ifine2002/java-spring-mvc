@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import vn.ifine.laptopshop.domain.Order;
 import vn.ifine.laptopshop.domain.OrderDetail;
+import vn.ifine.laptopshop.domain.User;
 import vn.ifine.laptopshop.repository.OrderDetailRepository;
 import vn.ifine.laptopshop.repository.OrderRepository;
 
@@ -48,6 +49,10 @@ public class OrderService {
             currentOrder.setStatus(order.getStatus());
             this.orderRepository.save(currentOrder);
         }
+    }
+
+    public List<Order> fetchOrderByUser(User user) {
+        return this.orderRepository.findByUser(user);
     }
 
 }

@@ -205,6 +205,27 @@
             });
         }
     });
+
+    // Thêm hàm để khởi tạo giá trị quantity ban đầu
+    function initializeQuantityValue() {
+        $('.quantity input').each(function () {
+            const input = $(this);
+            const value = input.val();
+            const index = input.attr("data-cart-detail-index");
+            if (index !== undefined) {
+                const el = document.getElementById(`cartDetails${index}.quantity`);
+                if (el) {
+                    $(el).val(value);
+                }
+            }
+        });
+    }
+
+    // Gọi hàm khởi tạo khi document ready
+    $(document).ready(function () {
+        initializeQuantityValue();
+    });
+
     // Thêm handler mới cho sự kiện thay đổi input
     $('.quantity input').on('input', function () {
         const input = $(this);

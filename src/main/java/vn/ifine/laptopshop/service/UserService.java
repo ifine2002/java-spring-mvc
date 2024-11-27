@@ -8,6 +8,8 @@ import jakarta.transaction.Transactional;
 import vn.ifine.laptopshop.domain.Role;
 import vn.ifine.laptopshop.domain.User;
 import vn.ifine.laptopshop.domain.dto.RegisterDTO;
+import vn.ifine.laptopshop.repository.OrderRepository;
+import vn.ifine.laptopshop.repository.ProductRepository;
 import vn.ifine.laptopshop.repository.RoleRepository;
 import vn.ifine.laptopshop.repository.UserRepository;
 
@@ -17,10 +19,16 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
+    private final ProductRepository productRepository;
+    private final OrderRepository orderRepository;
 
-    public UserService(UserRepository userRepository, RoleRepository roleRepository) {
+    public UserService(UserRepository userRepository, RoleRepository roleRepository,
+            ProductRepository productRepository,
+            OrderRepository orderRepository) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
+        this.productRepository = productRepository;
+        this.orderRepository = orderRepository;
     }
 
     public List<User> getAllUsers() {
@@ -64,5 +72,17 @@ public class UserService {
 
     public User getUserByEmail(String email) {
         return this.userRepository.findByEmail(email);
+    }
+
+    public long countUsers() {
+        return this.userRepository.count();
+    }
+
+    public long countProducts() {
+        return this.productRepository.count();
+    }
+
+    public long countOrders() {
+        return this.orderRepository.count();
     }
 }
