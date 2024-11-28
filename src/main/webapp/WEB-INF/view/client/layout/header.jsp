@@ -14,7 +14,7 @@
                     <div class="collapse navbar-collapse bg-white justify-content-between mx-5" id="navbarCollapse">
                         <div class="navbar-nav">
                             <a href="/" class="nav-item nav-link active">Trang chủ</a>
-                            <a href="/product" class="nav-item nav-link">Sản phẩm</a>
+                            <a href="/products" class="nav-item nav-link">Sản phẩm</a>
                         </div>
                         <div class="d-flex m-3 me-0">
                             <c:if test="${not empty pageContext.request.userPrincipal}">
@@ -23,7 +23,7 @@
                                     <i class="fa fa-shopping-bag fa-2x"></i>
                                     <span
                                         class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
-                                        style="top: -5px; left: 15px; height: 20px; min-width: 20px;">
+                                        style="top: -5px; left: 15px; height: 20px; min-width: 20px;" id="sumCart">
                                         ${sessionScope.sum}
                                     </span>
                                 </a>
@@ -59,7 +59,7 @@
                                 </div>
                             </c:if>
                             <c:if test="${empty pageContext.request.userPrincipal}">
-                                <a href="/login" class="position-relative me-4 my-auto">
+                                <a href="/login" class="a-login position-relative me-4 my-auto">
                                     Đăng nhập
                                 </a>
                             </c:if>

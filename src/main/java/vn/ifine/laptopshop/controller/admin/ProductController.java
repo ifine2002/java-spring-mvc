@@ -18,10 +18,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.validation.Valid;
 import vn.ifine.laptopshop.domain.Product;
-import vn.ifine.laptopshop.domain.User;
 import vn.ifine.laptopshop.service.ProductService;
 import vn.ifine.laptopshop.service.UploadService;
-import vn.ifine.laptopshop.service.UserService;
 
 @Controller
 public class ProductController {

@@ -10,7 +10,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -129,7 +128,7 @@ public class UserController {
             currentUser.setFullName(user.getFullName());
             currentUser.setAddress(user.getAddress());
             currentUser.setPhone(user.getPhone());
-            currentUser.setRole(this.userService.getRoleByName(currentUser.getRole().getName()));
+            currentUser.setRole(this.userService.getRoleByName(user.getRole().getName()));
             // Xử lý avatar nếu có upload file mới
             if (!file.isEmpty()) {
                 String avatar = this.uploadService.handleSaveUploadFile(file, "avatar");
